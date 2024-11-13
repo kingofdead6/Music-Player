@@ -7,15 +7,16 @@ const playPauseButton = document.getElementById("playPauseButton");
 const fileInput = document.getElementById("fileInput");
 const addSongsButton = document.getElementById("addSongsButton");
 const musicCircle = document.getElementById("musicCircle");
+const loader = document.getElementById('loader');
+const progressContainer = document.querySelector('.progress-container');
 
 
 let currentSong = null;
 let isPlaying = false;
 
-
-  customFileButton.addEventListener("click", () => {
-    fileInput.click();  
-  })
+customFileButton.addEventListener("click", () => {
+  fileInput.click();  
+});
 function displaySongs() {
   songListContainer.innerHTML = '';
   songs.forEach((song) => {
@@ -159,3 +160,16 @@ const run = () => {
 };
 
 run();
+
+
+audioPlayer.addEventListener('timeupdate', () => {
+  const progressPercentage = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+  loader.style.width = `${progressPercentage}%`;
+});
+
+progressContainer.addEventListener('click', (e) => {
+  const clickX = e.offsetX;
+  const containerWidth = progressContainer.offsetWidth;
+  const newTime = (clickX / containerWidth) * audioPlayer.duration;
+  audioPlayer.currentTime = newTime;
+});
