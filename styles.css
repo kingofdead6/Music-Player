@@ -1,0 +1,243 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    cursor: url('music.png') 10 10, auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000000;
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+.Buttons {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+#fileInput,
+#addSongsButton {
+    background-color: #18019c97;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#fileInput:hover,
+#addSongsButton:hover {
+    background-color: #1b02a8d9;
+}
+
+h1 {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-size: 36px; 
+    font-weight: bold;
+    text-align: center;
+    z-index: 10; 
+}
+
+.music-player {
+    background-color: rgba(30, 39, 46, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.music-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, #ff006e, #8338ec, #3a86ff, #00b4d8, #80ffdb);
+    background-size: 300% 300%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0.8;
+    animation: blobAnimation 4s infinite linear, colorShift 10s infinite linear;
+}
+
+.song-list {
+    background-color: rgba(177, 181, 185, 0.3); 
+    color: #1c0081;
+    border-radius: 10px;
+    max-height: 70px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.song-item {
+    padding: 5px 0;
+    border-bottom: 1px solid #b2bec3;
+    margin-bottom: 5px;
+}
+
+.song-item:hover {
+    background-color: rgba(177, 181, 185, 0.3); 
+}
+
+.song-list:hover {
+    overflow-y: auto;
+}
+
+.now-playing h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #b2bec3;
+}
+
+#currentSongInfo {
+    font-size: 16px;
+    color: #4c00ae;
+    font-weight: bold;
+}
+
+.player-controls button {
+    background-color: #2a00772d;
+    margin-top: 20px;
+    color: #ffffff;
+    padding: 10px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.player-controls button:hover {
+    background-color: #31007088;
+}
+
+.song-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.song-list::-webkit-scrollbar-thumb {
+    background-color: #636e72;
+    border-radius: 10px;
+}
+
+.song-list::-webkit-scrollbar-track {
+    background: #354e5a13;
+}
+
+#fileInput {
+    display: none;
+}
+
+#customFileButton {
+    background-color: #18019c97;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#customFileButton:hover {
+    background-color: #1b02a8d9;
+}
+
+@keyframes colorShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes blobAnimation {
+    0% {
+        border-radius: 30% 60% 50% 50% / 50% 60% 40% 50%;
+    }
+    12% {
+        border-radius: 50% 40% 60% 47% / 60% 47% 60% 47%;
+    }
+    25% {
+        border-radius: 60% 50% 40% 60% / 40% 52% 48% 60%;
+    }
+    37% {
+        border-radius: 40% 60% 50% 60% / 52% 50% 40% 60%;
+    }
+    50% {
+        border-radius: 50% 60% 40% 50% / 60% 40% 50% 47%;
+    }
+    62% {
+        border-radius: 47% 50% 60% 50% / 50% 47% 60% 50%;
+    }
+    75% {
+        border-radius: 60% 40% 50% 60% / 47% 60% 40% 50%;
+    }
+    87% {
+        border-radius: 48% 60% 47% 52% / 60% 40% 50% 48%;
+    }
+    100% {
+        border-radius: 30% 60% 50% 50% / 50% 60% 40% 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        top : 120px ;
+        font-size: 24px;
+    }
+
+    .music-player {
+        width: 100%;
+        padding: 10px;
+    }
+
+    #fileInput,
+    #addSongsButton {
+        padding: 10px 10px;
+    }
+    .music-circle {   
+        width: 350px;
+        height: 400px;
+    }
+}
+
+svg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	filter: sepia(20%);
+}
+body {
+    cursor: url("music.png") 10 10, auto;
+}
