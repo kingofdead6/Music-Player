@@ -238,6 +238,26 @@ svg {
 	height: 100%;
 	filter: sepia(20%);
 }
-body {
-    cursor: url("music.png") 10 10, auto;
-}
+
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background-color: #00b3ff53;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: height 0.3s ease;
+  }
+  
+  .loader {
+    position: relative;
+    height: 100%;
+    width: 0%; 
+    background: linear-gradient(to right, #28AE60, #212121);
+    border-radius: 5px;
+  }
+  .progress-container:hover{
+    height: 10px;
+  }
+  
